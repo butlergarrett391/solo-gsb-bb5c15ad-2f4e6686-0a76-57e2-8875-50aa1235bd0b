@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编织说明逐行针数校验</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>🧶 编织说明逐行针数校验</h1>
+    <p class="hint">
+      支持指令：<code>k</code>（下针，1→1）、<code>p</code>（上针，1→1）、
+      <code>yo</code>（挂线加针，0→1）、<code>k2tog</code>（两针并一针，2→1），
+      以及可嵌套的重复组 <code>(指令序列)*次数</code>，倍数须为正整数。
+      每行的消耗针数必须恰好等于上一行产出的可用针数。
+    </p>
+
+    <section class="panel">
+      <label class="field">
+        起针数
+        <input type="number" id="start" min="1" step="1" value="10">
+      </label>
+      <label class="field">
+        逐行指令（每行一条，空行会被忽略）
+        <textarea id="rows" rows="8" spellcheck="false"
+          placeholder="例如：&#10;k*2 (yo k2tog)*3 k*2&#10;p*10&#10;(k2tog yo)*5"></textarea>
+      </label>
+      <div class="actions">
+        <button id="validateBtn" class="primary">校验（Ctrl+Enter）</button>
+        <button id="exampleBtn" type="button">填入示例</button>
+        <button id="clearBtn" type="button">清空</button>
+      </div>
+    </section>
+
+    <section id="result" aria-live="polite"></section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
